@@ -97,6 +97,50 @@ boolean Adafruit_SGP30::IAQmeasure(void) {
   return true;
 }
  
+/**************************************************************************/
+/*! 
+    @brief Request baseline calibration values for both CO2 and TVOC IAQ calculations. Places results in parameter memory locaitons.
+    @param eco2_base A pointer to a uint16_t which we will save the calibration value to
+    @param tvoc_base A pointer to a uint16_t which we will save the calibration value to
+    @returns True if command completed successfully, false if something went wrong!
+*/
+/**************************************************************************/
+boolean Adafruit_SGP30::getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base) {
+  uint8_t command[2];
+  command[0] = 0x20;
+  command[1] = 0x15;
+  uint16_t reply[2];
+  if (! readWordFromCommand(command, 2, 10, reply, 2))
+    return false;
+  *eco2_base = reply[0];
+  *tvoc_base = reply[1];
+  return true;
+}
+
+/**************************************************************************/
+/*! 
+    @brief Assign baseline calibration values for both CO2 and TVOC IAQ calculations.
+    @param co2_base A uint16_t which we will save the calibration value from
+    @param tvoc_base A uint16_t which we will save the calibration value from
+    @returns True if command completed successfully, false if something went wrong!
+*/
+/**************************************************************************/
+boolean Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
+  uint8_t command[8];
+  command[0] = 0x20;
+  command[1] = 0x1e;
+  command[2] = tvoc_base >> 8;
+  command[3] = tvoc_base & 0xFF;
+  command[4] = generateCRC(command+2, 2);
+  command[5] = eco2_base >> 8;
+  command[6] = eco2_base & 0xFF;
+  command[7] = generateCRC(command+5, 2);
+
+  uint16_t reply[2];
+  if (! readWordFromCommand(command, 8, 10, reply, 0))
+    return false;
+  return true;
+}
 
 /**************************************************************************/
 /*! 
@@ -112,7 +156,7 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
   Wire.beginTransmission(_i2caddr);
 
 #ifdef I2C_DEBUG
-  Serial.print("-> ");
+  Serial.print("\t\t-> ");
 #endif
 
   for (uint8_t i=0; i<commandLength; i++) {
@@ -136,7 +180,7 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
     return false;
   uint8_t replybuffer[replylen];
 #ifdef I2C_DEBUG
-  Serial.print("<- ");
+  Serial.print("\t\t<- ");
 #endif  
   for (uint8_t i=0; i<replylen; i++) {
     replybuffer[i] = Wire.read();
@@ -152,7 +196,7 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
   for (uint8_t i=0; i<readlen; i++) {
     uint8_t crc = generateCRC(replybuffer+i*3, 2);
 #ifdef I2C_DEBUG
-    Serial.print("CRC calced: 0x"); Serial.print(crc, HEX);
+    Serial.print("\t\tCRC calced: 0x"); Serial.print(crc, HEX);
     Serial.print(" vs. 0x"); Serial.println(replybuffer[i * 3 + 2], HEX);
 #endif
     if (crc != replybuffer[i * 3 + 2])
@@ -162,7 +206,7 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
     readdata[i] <<= 8;
     readdata[i] |= replybuffer[i*3 + 1];
 #ifdef I2C_DEBUG
-    Serial.print("Read: 0x"); Serial.println(readdata[i], HEX);
+    Serial.print("\t\tRead: 0x"); Serial.println(readdata[i], HEX);
 #endif
   }
   return true;
