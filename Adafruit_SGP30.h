@@ -40,7 +40,19 @@ class Adafruit_SGP30 {
   boolean IAQinit(void);
   boolean IAQmeasure(void);
 
-  uint16_t TVOC, eCO2;
+  /**
+   * The last measurement of the IAQ-calculated Total Volatile Organic Compounds in ppb. This value is set when you call {@link IAQmeasure()}
+   */
+  uint16_t TVOC;
+
+  /**
+   * The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasure()}
+   */
+  uint16_t eCO2;
+
+  /**
+   * The 48-bit serial number, this value is set when you call {@link begin()}
+   */
   uint16_t serialnumber[3];
  private:
   uint8_t _i2caddr;
