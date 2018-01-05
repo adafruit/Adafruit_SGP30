@@ -4,7 +4,7 @@ Adafruit_SGP30
 This is the Adafruit SGP30 Gas / Air Quality  I2C sensor library
 
 Tested and works great with the Aadafruit SGP30 Breakout Board 
-  * http://www.adafruit.com/products/xxxx
+  * http://www.adafruit.com/products/3709
 
 This chip uses I2C to communicate, 2 pins are required to interface
 

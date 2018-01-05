@@ -1,11 +1,11 @@
 /**************************************************************************/
 /*! 
     @file     Adafruit_SGP30.h
-    @author   ladyada(Adafruit Industries)
+    @author   ladyada (Adafruit Industries)
 	@license  BSD (see license.txt)
 	
 	This is a library for the Adafruit SGP30 Gas Sensor breakout board
-	----> http://www.adafruit.com/products/xxxx
+	----> http://www.adafruit.com/products/3709
 	
 	Adafruit invests time and resources providing this open source code, 
 	please support Adafruit and open-source hardware by purchasing 
