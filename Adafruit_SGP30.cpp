@@ -1,19 +1,29 @@
-/**************************************************************************/
-/*! 
-    @file     Adafruit_SGP30.cpp
-    @author   ladyada (Adafruit Industries)
-	@license  BSD (see license.txt)
-	
-	This is a library for the Adafruit SGP30 Gas Sensor breakout board
-	----> http://www.adafruit.com/products/3709
-	
-	Adafruit invests time and resources providing this open source code, 
-	please support Adafruit and open-source hardware by purchasing 
-	products from Adafruit!
-
-	@section  HISTORY
-*/
-/**************************************************************************/
+/*!
+ * @file Adafruit_SGP30.cpp
+ *
+ * @mainpage Adafruit SGP30 gas sensor driver
+ *
+ * @section intro_sec Introduction
+ *
+ * This is the documentation for Adafruit's SGP30 driver for the
+ * Arduino platform.  It is designed specifically to work with the
+ * Adafruit SGP30 breakout: http://www.adafruit.com/products/3709
+ *
+ * These sensors use I2C to communicate, 2 pins (SCL+SDA) are required
+ * to interface with the breakout.
+ *
+ * Adafruit invests time and resources providing this open source code,
+ * please support Adafruit and open-source hardware by purchasing
+ * products from Adafruit!
+ *
+ *
+ * @section author Author
+ * Written by Ladyada for Adafruit Industries.
+ *
+ * @section license License
+ * BSD license, all text here must be included in any redistribution.
+ *
+ */
 
 
 #if ARDUINO >= 100
@@ -120,7 +130,7 @@ boolean Adafruit_SGP30::getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base)
 /**************************************************************************/
 /*! 
     @brief Assign baseline calibration values for both CO2 and TVOC IAQ calculations.
-    @param co2_base A uint16_t which we will save the calibration value from
+    @param eco2_base A uint16_t which we will save the calibration value from
     @param tvoc_base A uint16_t which we will save the calibration value from
     @returns True if command completed successfully, false if something went wrong!
 */
