@@ -46,14 +46,21 @@ Adafruit_SGP30::Adafruit_SGP30() {
 
 /**************************************************************************/
 /*! 
-    @brief  Setups the hardware and detects a valid SGP30. Initializes Wire
+    @brief  Setups the hardware and detects a valid SGP30. Initializes I2C
     then reads the serialnumber and checks that we are talking to an SGP30
+    @param  theWire Optional pointer to I2C interface, otherwise use Wire
     @returns True if SGP30 found on I2C, False if something went wrong!
 */
 /**************************************************************************/
-boolean Adafruit_SGP30::begin(void) {
+boolean Adafruit_SGP30::begin(TwoWire *theWire) {
   _i2caddr = SGP30_I2CADDR_DEFAULT;
-  Wire.begin();
+  if (theWire == NULL) {
+    _i2c = &Wire;
+  } else {
+    _i2c = theWire;
+  }
+
+  _i2c->begin();
 
   
   uint8_t command[2];
@@ -163,14 +170,14 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
 {
   uint8_t data;
 
-  Wire.beginTransmission(_i2caddr);
+  _i2c->beginTransmission(_i2caddr);
 
 #ifdef I2C_DEBUG
   Serial.print("\t\t-> ");
 #endif
 
   for (uint8_t i=0; i<commandLength; i++) {
-    Wire.write(command[i]);
+    _i2c->write(command[i]);
 #ifdef I2C_DEBUG
     Serial.print("0x"); Serial.print(command[i], HEX); Serial.print(", ");
 #endif
@@ -178,7 +185,7 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
 #ifdef I2C_DEBUG
   Serial.println();
 #endif
-  Wire.endTransmission();
+  _i2c->endTransmission();
 
   delay(delayms);
 
@@ -186,14 +193,14 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
     return true;
 
   uint8_t replylen = readlen * (SGP30_WORD_LEN +1);
-  if (Wire.requestFrom(_i2caddr, replylen) != replylen) 
+  if (_i2c->requestFrom(_i2caddr, replylen) != replylen) 
     return false;
   uint8_t replybuffer[replylen];
 #ifdef I2C_DEBUG
   Serial.print("\t\t<- ");
 #endif  
   for (uint8_t i=0; i<replylen; i++) {
-    replybuffer[i] = Wire.read();
+    replybuffer[i] = _i2c->read();
 #ifdef I2C_DEBUG
     Serial.print("0x"); Serial.print(replybuffer[i], HEX); Serial.print(", ");
 #endif

@@ -36,7 +36,7 @@
 class Adafruit_SGP30 {
  public:
   Adafruit_SGP30();
-  boolean begin(void);
+  boolean begin(TwoWire *theWire = NULL);
   boolean IAQinit(void);
   boolean IAQmeasure(void);
 
@@ -58,6 +58,7 @@ class Adafruit_SGP30 {
    */
   uint16_t serialnumber[3];
  private:
+  TwoWire *_i2c;
   uint8_t _i2caddr;
 
   void write(uint8_t address, uint8_t *data, uint8_t n);
