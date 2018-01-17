@@ -75,9 +75,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a9e19e671ae7e62cb8d94bb3cea13f387">Adafruit_SGP30</a> ()</td></tr>
 <tr class="memdesc:a9e19e671ae7e62cb8d94bb3cea13f387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new SGP30 class. <br /></td></tr>
 <tr class="separator:a9e19e671ae7e62cb8d94bb3cea13f387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36e8edd4e555457e3a3bcb6caee28b42"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a36e8edd4e555457e3a3bcb6caee28b42">begin</a> (void)</td></tr>
-<tr class="memdesc:a36e8edd4e555457e3a3bcb6caee28b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes Wire then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#a36e8edd4e555457e3a3bcb6caee28b42">More...</a><br /></td></tr>
-<tr class="separator:a36e8edd4e555457e3a3bcb6caee28b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceec351157bc5275259215421abe1cac"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#aceec351157bc5275259215421abe1cac">begin</a> (TwoWire *theWire=NULL)</td></tr>
+<tr class="memdesc:aceec351157bc5275259215421abe1cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#aceec351157bc5275259215421abe1cac">More...</a><br /></td></tr>
+<tr class="separator:aceec351157bc5275259215421abe1cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a4c13a25bbe0d24ebddb00996f5a9f331">IAQinit</a> (void)</td></tr>
 <tr class="memdesc:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to begin the IAQ algorithm. Must be called after startup.  <a href="#a4c13a25bbe0d24ebddb00996f5a9f331">More...</a><br /></td></tr>
 <tr class="separator:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,8 +103,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with SGP30 Gas Sensor </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a36e8edd4e555457e3a3bcb6caee28b42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36e8edd4e555457e3a3bcb6caee28b42">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="aceec351157bc5275259215421abe1cac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceec351157bc5275259215421abe1cac">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,14 +112,20 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">boolean Adafruit_SGP30::begin </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">TwoWire *&#160;</td>
+          <td class="paramname"><em>theWire</em> = <code>NULL</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Setups the hardware and detects a valid SGP30. Initializes Wire then reads the serialnumber and checks that we are talking to an SGP30. </p>
+<p>Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">theWire</td><td>Optional pointer to I2C interface, otherwise use Wire </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>True if SGP30 found on I2C, False if something went wrong! </dd></dl>
 
 </div>
@@ -284,7 +290,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The 48-bit serial number, this value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a36e8edd4e555457e3a3bcb6caee28b42">begin()</a> </p>
+<p>The 48-bit serial number, this value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#aceec351157bc5275259215421abe1cac">begin()</a> </p>
 
 </div>
 </div>
