@@ -107,7 +107,7 @@ boolean Adafruit_SGP30::IAQmeasure(void) {
   command[0] = 0x20;
   command[1] = 0x08;
   uint16_t reply[2];
-  if (! readWordFromCommand(command, 2, 10, reply, 2))
+  if (! readWordFromCommand(command, 2, 12, reply, 2))
     return false;
   TVOC = reply[1];
   eCO2 = reply[0];
