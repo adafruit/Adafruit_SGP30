@@ -153,10 +153,7 @@ boolean Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
   command[6] = eco2_base & 0xFF;
   command[7] = generateCRC(command+5, 2);
 
-  uint16_t reply[2];
-  if (! readWordFromCommand(command, 8, 10, reply, 0))
-    return false;
-  return true;
+  return readWordFromCommand(command, 8, 10);
 }
 
 /**************************************************************************/
