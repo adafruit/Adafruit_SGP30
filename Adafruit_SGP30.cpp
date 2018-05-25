@@ -163,7 +163,7 @@ boolean Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
     @returns True if command completed successfully, false if something went wrong!
 */
 /**************************************************************************/
-boolean SensirionSGP30::setHumidity(uint32_t absolute_humidity) {
+boolean Adafruit_SGP30::setHumidity(uint32_t absolute_humidity) {
   if (absolute_humidity > 256000) {
     return false;
   }
