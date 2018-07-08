@@ -90,6 +90,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad6edd8767e42f0862c7a0ae68d95286c"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#ad6edd8767e42f0862c7a0ae68d95286c">setIAQBaseline</a> (uint16_t eco2_base, uint16_t tvoc_base)</td></tr>
 <tr class="memdesc:ad6edd8767e42f0862c7a0ae68d95286c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign baseline calibration values for both CO2 and TVOC IAQ calculations.  <a href="#ad6edd8767e42f0862c7a0ae68d95286c">More...</a><br /></td></tr>
 <tr class="separator:ad6edd8767e42f0862c7a0ae68d95286c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cea979c8b14138cef092f13102b0e22"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a3cea979c8b14138cef092f13102b0e22">setHumidity</a> (uint32_t absolute_humidity)</td></tr>
+<tr class="memdesc:a3cea979c8b14138cef092f13102b0e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the absolute humidity value [mg/m^3] for compensation to increase precision of TVOC and eCO2.  <a href="#a3cea979c8b14138cef092f13102b0e22">More...</a><br /></td></tr>
+<tr class="separator:a3cea979c8b14138cef092f13102b0e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -241,6 +244,33 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">eco2_base</td><td>A uint16_t which we will save the calibration value from </td></tr>
     <tr><td class="paramname">tvoc_base</td><td>A uint16_t which we will save the calibration value from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if command completed successfully, false if something went wrong! </dd></dl>
+
+</div>
+</div>
+<a id="a3cea979c8b14138cef092f13102b0e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cea979c8b14138cef092f13102b0e22">&#9670;&nbsp;</a></span>setHumidity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean Adafruit_SGP30::setHumidity </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>absolute_humidity</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the absolute humidity value [mg/m^3] for compensation to increase precision of TVOC and eCO2. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">absolute_humidity</td><td>A uint32_t [mg/m^3] which we will be used for compensation. If the absolute humidity is set to zero, humidity compensation will be disabled. </td></tr>
   </table>
   </dd>
 </dl>
