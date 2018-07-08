@@ -157,6 +157,29 @@ boolean Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
 }
 
 /**************************************************************************/
+/*!
+    @brief Set the absolute humidity value [mg/m^3] for compensation to increase precision of TVOC and eCO2.
+    @param absolute_humidity A uint32_t [mg/m^3] which we will be used for compensation. If the absolute humidity is set to zero, humidity compensation will be disabled.
+    @returns True if command completed successfully, false if something went wrong!
+*/
+/**************************************************************************/
+boolean Adafruit_SGP30::setHumidity(uint32_t absolute_humidity) {
+  if (absolute_humidity > 256000) {
+    return false;
+  }
+
+  uint16_t ah_scaled = (uint16_t)(((uint64_t)absolute_humidity * 256 * 16777) >> 24);
+  uint8_t command[5];
+  command[0] = 0x20;
+  command[1] = 0x61;
+  command[2] = ah_scaled >> 8;
+  command[3] = ah_scaled & 0xFF;
+  command[4] = generateCRC(command+2, 2);
+
+  return readWordFromCommand(command, 5, 10);
+}
+
+/**************************************************************************/
 /*! 
     @brief  I2C low level interfacing
 */
