@@ -39,6 +39,7 @@ class Adafruit_SGP30 {
   boolean begin(TwoWire *theWire = NULL);
   boolean IAQinit(void);
   boolean IAQmeasure(void);
+  boolean IAQmeasureRaw(void);
 
   boolean getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base);
   boolean setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base);
@@ -53,6 +54,16 @@ class Adafruit_SGP30 {
    * The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasure()}
    */
   uint16_t eCO2;
+
+  /**
+   * The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasureRaw()}
+   */
+  uint16_t rawH2;
+
+  /**
+   * The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasureRaw()}
+   */
+  uint16_t rawEthanol;
 
   /**
    * The 48-bit serial number, this value is set when you call {@link begin()}

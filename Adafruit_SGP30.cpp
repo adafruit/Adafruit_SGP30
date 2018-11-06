@@ -37,7 +37,7 @@
 //#define I2C_DEBUG
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Instantiates a new SGP30 class
 */
 /**************************************************************************/
@@ -45,7 +45,7 @@ Adafruit_SGP30::Adafruit_SGP30() {
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Setups the hardware and detects a valid SGP30. Initializes I2C
     then reads the serialnumber and checks that we are talking to an SGP30
     @param  theWire Optional pointer to I2C interface, otherwise use Wire
@@ -62,29 +62,29 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire) {
 
   _i2c->begin();
 
-  
+
   uint8_t command[2];
   command[0] = 0x36;
   command[1] = 0x82;
-  if (! readWordFromCommand(command, 2, 10, serialnumber, 3)) 
+  if (! readWordFromCommand(command, 2, 10, serialnumber, 3))
     return false;
 
   uint16_t featureset;
   command[0] = 0x20;
   command[1] = 0x2F;
-  if (! readWordFromCommand(command, 2, 10, &featureset, 1)) 
+  if (! readWordFromCommand(command, 2, 10, &featureset, 1))
     return false;
   //Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
-  if (featureset != SGP30_FEATURESET) 
+  if (featureset != SGP30_FEATURESET)
     return false;
-  if (! IAQinit()) 
+  if (! IAQinit())
     return false;
 
   return true;
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Commands the sensor to begin the IAQ algorithm. Must be called after startup.
     @returns True if command completed successfully, false if something went wrong!
 */
@@ -97,7 +97,7 @@ boolean Adafruit_SGP30::IAQinit(void) {
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  Commands the sensor to take a single eCO2/VOC measurement. Places results in {@link TVOC} and {@link eCO2}
     @returns True if command completed successfully, false if something went wrong!
 */
@@ -113,9 +113,27 @@ boolean Adafruit_SGP30::IAQmeasure(void) {
   eCO2 = reply[0];
   return true;
 }
- 
+
 /**************************************************************************/
-/*! 
+/*!
+    @brief  Commands the sensor to take a single H2/ethanol raw measurement. Places results in {@link rawH2} and {@link rawEthanol}
+    @returns True if command completed successfully, false if something went wrong!
+*/
+/**************************************************************************/
+boolean Adafruit_SGP30::IAQmeasureRaw(void) {
+  uint8_t command[2];
+  command[0] = 0x20;
+  command[1] = 0x50;
+  uint16_t reply[2];
+  if (! readWordFromCommand(command, 2, 25, reply, 2))
+    return false;
+  rawEthanol = reply[1];
+  rawH2 = reply[0];
+  return true;
+}
+
+/**************************************************************************/
+/*!
     @brief Request baseline calibration values for both CO2 and TVOC IAQ calculations. Places results in parameter memory locaitons.
     @param eco2_base A pointer to a uint16_t which we will save the calibration value to
     @param tvoc_base A pointer to a uint16_t which we will save the calibration value to
@@ -135,7 +153,7 @@ boolean Adafruit_SGP30::getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base)
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief Assign baseline calibration values for both CO2 and TVOC IAQ calculations.
     @param eco2_base A uint16_t which we will save the calibration value from
     @param tvoc_base A uint16_t which we will save the calibration value from
@@ -180,7 +198,7 @@ boolean Adafruit_SGP30::setHumidity(uint32_t absolute_humidity) {
 }
 
 /**************************************************************************/
-/*! 
+/*!
     @brief  I2C low level interfacing
 */
 /**************************************************************************/
@@ -209,16 +227,16 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[], uint8_t commandLe
 
   delay(delayms);
 
-  if (readlen == 0) 
+  if (readlen == 0)
     return true;
 
   uint8_t replylen = readlen * (SGP30_WORD_LEN +1);
-  if (_i2c->requestFrom(_i2caddr, replylen) != replylen) 
+  if (_i2c->requestFrom(_i2caddr, replylen) != replylen)
     return false;
   uint8_t replybuffer[replylen];
 #ifdef I2C_DEBUG
   Serial.print("\t\t<- ");
-#endif  
+#endif
   for (uint8_t i=0; i<replylen; i++) {
     replybuffer[i] = _i2c->read();
 #ifdef I2C_DEBUG
