@@ -30,13 +30,14 @@
 #define SGP30_CRC8_INIT        0xFF    ///< Init value for CRC
 #define SGP30_WORD_LEN         2       ///< 2 bytes per word
 
-/**************************************************************************/
-/*!  Class that stores state and functions for interacting with SGP30 Gas Sensor */
-/**************************************************************************/
+/*!  
+ *  @brief  Class that stores state and functions for interacting with 
+ *          SGP30 Gas Sensor 
+ */
 class Adafruit_SGP30 {
  public:
   Adafruit_SGP30();
-  boolean begin(TwoWire *theWire = NULL);
+  boolean begin(TwoWire *theWire = &Wire);
   boolean IAQinit(void);
   boolean IAQmeasure(void);
 
@@ -44,19 +45,13 @@ class Adafruit_SGP30 {
   boolean setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base);
   boolean setHumidity(uint32_t absolute_humidity);
 
-  /**
-   * The last measurement of the IAQ-calculated Total Volatile Organic Compounds in ppb. This value is set when you call {@link IAQmeasure()}
-   */
+  /** The last measurement of the IAQ-calculated Total Volatile Organic Compounds in ppb. This value is set when you call {@link IAQmeasure()} **/
   uint16_t TVOC;
 
-  /**
-   * The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasure()}
-   */
+  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call {@link IAQmeasure()} **/
   uint16_t eCO2;
 
-  /**
-   * The 48-bit serial number, this value is set when you call {@link begin()}
-   */
+  /** The 48-bit serial number, this value is set when you call {@link begin()} **/
   uint16_t serialnumber[3];
  private:
   TwoWire *_i2c;
