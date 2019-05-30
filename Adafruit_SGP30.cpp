@@ -99,6 +99,23 @@ boolean Adafruit_SGP30::IAQmeasure(void) {
   return true;
 }
 
+ /*!
+  *  @brief  Commands the sensor to take a single H2/ethanol raw measurement. Places results in {@link rawH2} and {@link rawEthanol}
+  *  @returns True if command completed successfully, false if something went wrong!
+  */
+ boolean Adafruit_SGP30::IAQmeasureRaw(void) {
+   uint8_t command[2];
+   command[0] = 0x20;
+   command[1] = 0x50;
+   uint16_t reply[2];
+   if (! readWordFromCommand(command, 2, 25, reply, 2))
+     return false;
+   rawEthanol = reply[1];
+   rawH2 = reply[0];
+   return true;
+ }
+
+
 /*!
  *   @brief  Request baseline calibration values for both CO2 and TVOC IAQ
  *           calculations. Places results in parameter memory locaitons.
