@@ -81,12 +81,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a3d7d017e7fd95c8f851e26097b6400dc">begin</a> (TwoWire *theWire=&amp;Wire)</td></tr>
 <tr class="memdesc:a3d7d017e7fd95c8f851e26097b6400dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#a3d7d017e7fd95c8f851e26097b6400dc">More...</a><br /></td></tr>
 <tr class="separator:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a4c13a25bbe0d24ebddb00996f5a9f331">IAQinit</a> (void)</td></tr>
-<tr class="memdesc:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to begin the IAQ algorithm. Must be called after startup.  <a href="#a4c13a25bbe0d24ebddb00996f5a9f331">More...</a><br /></td></tr>
-<tr class="separator:a4c13a25bbe0d24ebddb00996f5a9f331"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84c50b3d87152cda652ebe13769711f9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a84c50b3d87152cda652ebe13769711f9">IAQmeasure</a> (void)</td></tr>
-<tr class="memdesc:a84c50b3d87152cda652ebe13769711f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to take a single eCO2/VOC measurement. Places results in <a class="el" href="class_adafruit___s_g_p30.html#a03d6f71c0670a46aeeeb4e050c6585b7">TVOC</a> and <a class="el" href="class_adafruit___s_g_p30.html#a19919d0650b51786aff6e9ca710442a5">eCO2</a>.  <a href="#a84c50b3d87152cda652ebe13769711f9">More...</a><br /></td></tr>
-<tr class="separator:a84c50b3d87152cda652ebe13769711f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29003ac4fe907073c5d20f485b37b147"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a29003ac4fe907073c5d20f485b37b147">IAQinit</a> ()</td></tr>
+<tr class="memdesc:a29003ac4fe907073c5d20f485b37b147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to begin the IAQ algorithm. Must be called after startup.  <a href="#a29003ac4fe907073c5d20f485b37b147">More...</a><br /></td></tr>
+<tr class="separator:a29003ac4fe907073c5d20f485b37b147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02754394151e98a900c931edfd0ac4b8"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a02754394151e98a900c931edfd0ac4b8">IAQmeasure</a> ()</td></tr>
+<tr class="memdesc:a02754394151e98a900c931edfd0ac4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to take a single eCO2/VOC measurement. Places results in <a class="el" href="class_adafruit___s_g_p30.html#a03d6f71c0670a46aeeeb4e050c6585b7">TVOC</a> and <a class="el" href="class_adafruit___s_g_p30.html#a19919d0650b51786aff6e9ca710442a5">eCO2</a>.  <a href="#a02754394151e98a900c931edfd0ac4b8">More...</a><br /></td></tr>
+<tr class="separator:a02754394151e98a900c931edfd0ac4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83ec323813aa3b1710574d11f6ce805"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#aa83ec323813aa3b1710574d11f6ce805">IAQmeasureRaw</a> ()</td></tr>
+<tr class="memdesc:aa83ec323813aa3b1710574d11f6ce805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to take a single H2/ethanol raw measurement. Places results in <a class="el" href="class_adafruit___s_g_p30.html#a2211c795a555895749479fc1f4e35163">rawH2</a> and <a class="el" href="class_adafruit___s_g_p30.html#acbd81d967af8ec077fd8fdce90c26fed">rawEthanol</a>.  <a href="#aa83ec323813aa3b1710574d11f6ce805">More...</a><br /></td></tr>
+<tr class="separator:aa83ec323813aa3b1710574d11f6ce805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad98238628bb13cdc18a704b209952273"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#ad98238628bb13cdc18a704b209952273">getIAQBaseline</a> (uint16_t *eco2_base, uint16_t *tvoc_base)</td></tr>
 <tr class="memdesc:ad98238628bb13cdc18a704b209952273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request baseline calibration values for both CO2 and TVOC IAQ calculations. Places results in parameter memory locaitons.  <a href="#ad98238628bb13cdc18a704b209952273">More...</a><br /></td></tr>
 <tr class="separator:ad98238628bb13cdc18a704b209952273"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,6 +106,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a03d6f71c0670a46aeeeb4e050c6585b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19919d0650b51786aff6e9ca710442a5"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a19919d0650b51786aff6e9ca710442a5">eCO2</a></td></tr>
 <tr class="separator:a19919d0650b51786aff6e9ca710442a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2211c795a555895749479fc1f4e35163"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a2211c795a555895749479fc1f4e35163">rawH2</a></td></tr>
+<tr class="separator:a2211c795a555895749479fc1f4e35163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd81d967af8ec077fd8fdce90c26fed"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#acbd81d967af8ec077fd8fdce90c26fed">rawEthanol</a></td></tr>
+<tr class="separator:acbd81d967af8ec077fd8fdce90c26fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3380958b75cc73b1e01f1ac66c47f4b8"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a3380958b75cc73b1e01f1ac66c47f4b8">serialnumber</a> [3]</td></tr>
 <tr class="separator:a3380958b75cc73b1e01f1ac66c47f4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -136,8 +143,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4c13a25bbe0d24ebddb00996f5a9f331"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c13a25bbe0d24ebddb00996f5a9f331">&#9670;&nbsp;</a></span>IAQinit()</h2>
+<a id="a29003ac4fe907073c5d20f485b37b147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29003ac4fe907073c5d20f485b37b147">&#9670;&nbsp;</a></span>IAQinit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,8 +164,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a84c50b3d87152cda652ebe13769711f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84c50b3d87152cda652ebe13769711f9">&#9670;&nbsp;</a></span>IAQmeasure()</h2>
+<a id="a02754394151e98a900c931edfd0ac4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02754394151e98a900c931edfd0ac4b8">&#9670;&nbsp;</a></span>IAQmeasure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,6 +181,27 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Commands the sensor to take a single eCO2/VOC measurement. Places results in <a class="el" href="class_adafruit___s_g_p30.html#a03d6f71c0670a46aeeeb4e050c6585b7">TVOC</a> and <a class="el" href="class_adafruit___s_g_p30.html#a19919d0650b51786aff6e9ca710442a5">eCO2</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if command completed successfully, false if something went wrong! </dd></dl>
+
+</div>
+</div>
+<a id="aa83ec323813aa3b1710574d11f6ce805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83ec323813aa3b1710574d11f6ce805">&#9670;&nbsp;</a></span>IAQmeasureRaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean Adafruit_SGP30::IAQmeasureRaw </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Commands the sensor to take a single H2/ethanol raw measurement. Places results in <a class="el" href="class_adafruit___s_g_p30.html#a2211c795a555895749479fc1f4e35163">rawH2</a> and <a class="el" href="class_adafruit___s_g_p30.html#acbd81d967af8ec077fd8fdce90c26fed">rawEthanol</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if command completed successfully, false if something went wrong! </dd></dl>
 
 </div>
@@ -293,7 +321,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The last measurement of the IAQ-calculated Total Volatile Organic Compounds in ppb. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a84c50b3d87152cda652ebe13769711f9">IAQmeasure()</a> </p>
+<p>The last measurement of the IAQ-calculated Total Volatile Organic Compounds in ppb. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a02754394151e98a900c931edfd0ac4b8">IAQmeasure()</a> </p>
 
 </div>
 </div>
@@ -308,7 +336,37 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a84c50b3d87152cda652ebe13769711f9">IAQmeasure()</a> </p>
+<p>The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a02754394151e98a900c931edfd0ac4b8">IAQmeasure()</a> </p>
+
+</div>
+</div>
+<a id="a2211c795a555895749479fc1f4e35163"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2211c795a555895749479fc1f4e35163">&#9670;&nbsp;</a></span>rawH2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Adafruit_SGP30::rawH2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#aa83ec323813aa3b1710574d11f6ce805">IAQmeasureRaw()</a> </p>
+
+</div>
+</div>
+<a id="acbd81d967af8ec077fd8fdce90c26fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbd81d967af8ec077fd8fdce90c26fed">&#9670;&nbsp;</a></span>rawEthanol</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t Adafruit_SGP30::rawEthanol</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The last measurement of the IAQ-calculated equivalent CO2 in ppm. This value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#aa83ec323813aa3b1710574d11f6ce805">IAQmeasureRaw()</a> </p>
 
 </div>
 </div>
