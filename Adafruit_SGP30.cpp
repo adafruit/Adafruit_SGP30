@@ -200,7 +200,6 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[],
                                             uint16_t delayms,
                                             uint16_t *readdata,
                                             uint8_t readlen) {
-  uint8_t data;
 
   _i2c->beginTransmission(_i2caddr);
 
