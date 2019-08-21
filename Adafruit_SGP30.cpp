@@ -28,6 +28,7 @@
 #include "Arduino.h"
 
 #include "Adafruit_SGP30.h"
+//#define I2C_DEBUG
 
 /*!
  *  @brief  Instantiates a new SGP30 class
@@ -59,8 +60,8 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire) {
   command[1] = 0x2F;
   if (!readWordFromCommand(command, 2, 10, &featureset, 1))
     return false;
-  // Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
-  if (featureset != SGP30_FEATURESET)
+  //Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
+  if ((featureset & 0xF0) != SGP30_FEATURESET)
     return false;
   if (!IAQinit())
     return false;
