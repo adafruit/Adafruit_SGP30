@@ -1,3 +1,30 @@
+/*!
+ * @file Adafruit_SGP30.cpp
+ *
+ * @mainpage Adafruit SGP30 gas sensor driver
+ *
+ * @section intro_sec Introduction
+ *
+ * This is the documentation for Adafruit's SGP30 driver for the
+ * Arduino platform.  It is designed specifically to work with the
+ * Adafruit SGP30 breakout: http://www.adafruit.com/products/3709
+ *
+ * These sensors use I2C to communicate, 2 pins (SCL+SDA) are required
+ * to interface with the breakout.
+ *
+ * Adafruit invests time and resources providing this open source code,
+ * please support Adafruit and open-source hardware by purchasing
+ * products from Adafruit!
+ *
+ *
+ * @section author Author
+ * Written by Ladyada for Adafruit Industries.
+ *
+ * @section license License
+ * BSD license, all text here must be included in any redistribution.
+ *
+ */
+
 #include "Arduino.h"
 
 #include "Adafruit_SGP30.h"
