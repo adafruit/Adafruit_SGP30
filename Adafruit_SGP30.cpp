@@ -60,13 +60,28 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire) {
   command[1] = 0x2F;
   if (!readWordFromCommand(command, 2, 10, &featureset, 1))
     return false;
-  //Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
+  // Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
   if ((featureset & 0xF0) != SGP30_FEATURESET)
     return false;
   if (!IAQinit())
     return false;
 
   return true;
+}
+
+/*!
+ *   @brief Commands the sensor to perform a soft reset using the "General
+ * Call" mode. Take note that this is not sensor specific and all devices that
+ * support the General Call mode on the on the same I2C bus will perform this.
+ *
+ *   @return True if command completed successfully, false if something went
+ *           wrong!
+ */
+boolean Adafruit_SGP30::softReset(void) {
+  uint8_t command[2];
+  command[0] = 0x00;
+  command[1] = 0x06;
+  return readWordFromCommand(command, 2, 10);
 }
 
 /*!
@@ -100,30 +115,31 @@ boolean Adafruit_SGP30::IAQmeasure(void) {
   return true;
 }
 
- /*!
-  *  @brief  Commands the sensor to take a single H2/ethanol raw measurement. Places results in {@link rawH2} and {@link rawEthanol}
-  *  @returns True if command completed successfully, false if something went wrong!
-  */
- boolean Adafruit_SGP30::IAQmeasureRaw(void) {
-   uint8_t command[2];
-   command[0] = 0x20;
-   command[1] = 0x50;
-   uint16_t reply[2];
-   if (! readWordFromCommand(command, 2, 25, reply, 2))
-     return false;
-   rawEthanol = reply[1];
-   rawH2 = reply[0];
-   return true;
- }
-
+/*!
+ *  @brief  Commands the sensor to take a single H2/ethanol raw measurement.
+ * Places results in {@link rawH2} and {@link rawEthanol}
+ *  @returns True if command completed successfully, false if something went
+ * wrong!
+ */
+boolean Adafruit_SGP30::IAQmeasureRaw(void) {
+  uint8_t command[2];
+  command[0] = 0x20;
+  command[1] = 0x50;
+  uint16_t reply[2];
+  if (!readWordFromCommand(command, 2, 25, reply, 2))
+    return false;
+  rawEthanol = reply[1];
+  rawH2 = reply[0];
+  return true;
+}
 
 /*!
  *   @brief  Request baseline calibration values for both CO2 and TVOC IAQ
  *           calculations. Places results in parameter memory locaitons.
- *   @param  eco2_base 
+ *   @param  eco2_base
  *           A pointer to a uint16_t which we will save the calibration
  *           value to
- *   @param  tvoc_base 
+ *   @param  tvoc_base
  *           A pointer to a uint16_t which we will save the calibration value to
  *   @return True if command completed successfully, false if something went
  *           wrong!
@@ -144,9 +160,9 @@ boolean Adafruit_SGP30::getIAQBaseline(uint16_t *eco2_base,
 /*!
  *  @brief  Assign baseline calibration values for both CO2 and TVOC IAQ
  *          calculations.
- *  @param  eco2_base 
+ *  @param  eco2_base
  *          A uint16_t which we will save the calibration value from
- *  @param  tvoc_base 
+ *  @param  tvoc_base
  *          A uint16_t which we will save the calibration value from
  *  @return True if command completed successfully, false if something went
  *          wrong!
@@ -166,9 +182,9 @@ boolean Adafruit_SGP30::setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base) {
 }
 
 /*!
- *  @brief  Set the absolute humidity value [mg/m^3] for compensation to increase
- *          precision of TVOC and eCO2.
- *  @param  absolute_humidity 
+ *  @brief  Set the absolute humidity value [mg/m^3] for compensation to
+ * increase precision of TVOC and eCO2.
+ *  @param  absolute_humidity
  *          A uint32_t [mg/m^3] which we will be used for compensation.
  *          If the absolute humidity is set to zero, humidity compensation
  *          will be disabled.
