@@ -81,6 +81,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a3d7d017e7fd95c8f851e26097b6400dc">begin</a> (TwoWire *theWire=&amp;Wire)</td></tr>
 <tr class="memdesc:a3d7d017e7fd95c8f851e26097b6400dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#a3d7d017e7fd95c8f851e26097b6400dc">More...</a><br /></td></tr>
 <tr class="separator:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e5f561a3b67c44f5d9c77fd6c8d3e1"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a25e5f561a3b67c44f5d9c77fd6c8d3e1">softReset</a> ()</td></tr>
+<tr class="memdesc:a25e5f561a3b67c44f5d9c77fd6c8d3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to perform a soft reset using the "General
+Call" mode. Take note that this is not sensor specific and all devices that support the General Call mode on the on the same I2C bus will perform this.  <a href="#a25e5f561a3b67c44f5d9c77fd6c8d3e1">More...</a><br /></td></tr>
+<tr class="separator:a25e5f561a3b67c44f5d9c77fd6c8d3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29003ac4fe907073c5d20f485b37b147"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a29003ac4fe907073c5d20f485b37b147">IAQinit</a> ()</td></tr>
 <tr class="memdesc:a29003ac4fe907073c5d20f485b37b147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to begin the IAQ algorithm. Must be called after startup.  <a href="#a29003ac4fe907073c5d20f485b37b147">More...</a><br /></td></tr>
 <tr class="separator:a29003ac4fe907073c5d20f485b37b147"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +144,28 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if SGP30 found on I2C, False if something went wrong! </dd></dl>
+
+</div>
+</div>
+<a id="a25e5f561a3b67c44f5d9c77fd6c8d3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e5f561a3b67c44f5d9c77fd6c8d3e1">&#9670;&nbsp;</a></span>softReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean Adafruit_SGP30::softReset </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Commands the sensor to perform a soft reset using the "General
+Call" mode. Take note that this is not sensor specific and all devices that support the General Call mode on the on the same I2C bus will perform this. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if command completed successfully, false if something went wrong! </dd></dl>
 
 </div>
 </div>
