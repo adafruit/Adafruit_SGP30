@@ -70,6 +70,21 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire) {
 }
 
 /*!
+ *   @brief Commands the sensor to perform a soft reset using the "General
+ * Call" mode. Take note that this is not sensor specific and all devices that
+ * support the General Call mode on the on the same I2C bus will perform this.
+ *
+ *   @return True if command completed successfully, false if something went
+ *           wrong!
+ */
+boolean Adafruit_SGP30::softReset(void) {
+  uint8_t command[2];
+  command[0] = 0x00;
+  command[1] = 0x06;
+  return readWordFromCommand(command, 2, 10);
+}
+
+/*!
  *   @brief  Commands the sensor to begin the IAQ algorithm. Must be called
  * after startup.
  *   @returns True if command completed successfully, false if something went
