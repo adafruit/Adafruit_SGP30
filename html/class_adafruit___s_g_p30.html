@@ -78,9 +78,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a9e19e671ae7e62cb8d94bb3cea13f387">Adafruit_SGP30</a> ()</td></tr>
 <tr class="memdesc:a9e19e671ae7e62cb8d94bb3cea13f387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new SGP30 class. <br /></td></tr>
 <tr class="separator:a9e19e671ae7e62cb8d94bb3cea13f387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a3d7d017e7fd95c8f851e26097b6400dc">begin</a> (TwoWire *theWire=&amp;Wire)</td></tr>
-<tr class="memdesc:a3d7d017e7fd95c8f851e26097b6400dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#a3d7d017e7fd95c8f851e26097b6400dc">More...</a><br /></td></tr>
-<tr class="separator:a3d7d017e7fd95c8f851e26097b6400dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6a2a288926b536bc38170f882d42d4"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#adc6a2a288926b536bc38170f882d42d4">begin</a> (TwoWire *theWire=&amp;Wire, boolean initSensor=true)</td></tr>
+<tr class="memdesc:adc6a2a288926b536bc38170f882d42d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the hardware and detects a valid SGP30. Initializes I2C then reads the serialnumber and checks that we are talking to an SGP30.  <a href="#adc6a2a288926b536bc38170f882d42d4">More...</a><br /></td></tr>
+<tr class="separator:adc6a2a288926b536bc38170f882d42d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e5f561a3b67c44f5d9c77fd6c8d3e1"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___s_g_p30.html#a25e5f561a3b67c44f5d9c77fd6c8d3e1">softReset</a> ()</td></tr>
 <tr class="memdesc:a25e5f561a3b67c44f5d9c77fd6c8d3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commands the sensor to perform a soft reset using the "General
 Call" mode. Take note that this is not sensor specific and all devices that support the General Call mode on the on the same I2C bus will perform this.  <a href="#a25e5f561a3b67c44f5d9c77fd6c8d3e1">More...</a><br /></td></tr>
@@ -120,8 +120,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with SGP30 Gas Sensor. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3d7d017e7fd95c8f851e26097b6400dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d7d017e7fd95c8f851e26097b6400dc">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="adc6a2a288926b536bc38170f882d42d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6a2a288926b536bc38170f882d42d4">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,8 +130,18 @@ Public Attributes</h2></td></tr>
           <td class="memname">boolean Adafruit_SGP30::begin </td>
           <td>(</td>
           <td class="paramtype">TwoWire *&#160;</td>
-          <td class="paramname"><em>theWire</em> = <code>&amp;Wire</code></td><td>)</td>
+          <td class="paramname"><em>theWire</em> = <code>&amp;Wire</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>initSensor</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -140,6 +150,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">theWire</td><td>Optional pointer to I2C interface, otherwise use Wire </td></tr>
+    <tr><td class="paramname">initSensor</td><td>Optional pointer to prevent IAQinit to be called. Used for Deep Sleep. </td></tr>
   </table>
   </dd>
 </dl>
@@ -407,7 +418,7 @@ Call" mode. Take note that this is not sensor specific and all devices that supp
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The 48-bit serial number, this value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#a3d7d017e7fd95c8f851e26097b6400dc">begin()</a> </p>
+<p>The 48-bit serial number, this value is set when you call <a class="el" href="class_adafruit___s_g_p30.html#adc6a2a288926b536bc38170f882d42d4">begin()</a> </p>
 
 </div>
 </div>
