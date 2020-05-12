@@ -42,7 +42,8 @@ Adafruit_SGP30::Adafruit_SGP30() {}
  *  @param  theWire
  *          Optional pointer to I2C interface, otherwise use Wire
  *  @param  initSensor
- *          Optional pointer to prevent IAQinit to be called. Used for Deep Sleep.
+ *          Optional pointer to prevent IAQinit to be called. Used for Deep 
+ *          Sleep.
  *  @return True if SGP30 found on I2C, False if something went wrong!
  */
 boolean Adafruit_SGP30::begin(TwoWire *theWire, boolean initSensor) {
@@ -65,7 +66,7 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire, boolean initSensor) {
   // Serial.print("Featureset 0x"); Serial.println(featureset, HEX);
   if ((featureset & 0xF0) != SGP30_FEATURESET)
     return false;
-  if(initSensor) {
+  if (initSensor) {
     if (!IAQinit())
       return false;
   }
