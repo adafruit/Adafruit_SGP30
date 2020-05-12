@@ -42,7 +42,7 @@ Adafruit_SGP30::Adafruit_SGP30() {}
  *  @param  theWire
  *          Optional pointer to I2C interface, otherwise use Wire
  *  @param  initSensor
- *          Optional pointer to prevent IAQinit to be called. Used for Deep 
+ *          Optional pointer to prevent IAQinit to be called. Used for Deep
  *          Sleep.
  *  @return True if SGP30 found on I2C, False if something went wrong!
  */
