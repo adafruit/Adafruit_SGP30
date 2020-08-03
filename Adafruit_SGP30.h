@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef ADAFRUIT_SGP30_H
+#define ADAFRUIT_SGP30_H
+
 #include "Arduino.h"
 #include <Wire.h>
 
@@ -78,3 +81,4 @@ private:
                               uint8_t readlen = 0);
   uint8_t generateCRC(uint8_t data[], uint8_t datalen);
 };
+#endif // ndef ADAFRUIT_SGP30_H
