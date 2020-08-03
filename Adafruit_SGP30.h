@@ -81,4 +81,4 @@ private:
                               uint8_t readlen = 0);
   uint8_t generateCRC(uint8_t data[], uint8_t datalen);
 };
-#endif //ndef ADAFRUIT_SGP30_H
+#endif // ndef ADAFRUIT_SGP30_H
