@@ -38,7 +38,7 @@ class Adafruit_SGP30 {
 public:
   Adafruit_SGP30();
   boolean begin(TwoWire *theWire = &Wire);
-  boolean softReset();
+  void softReset();
   boolean IAQinit();
   boolean IAQmeasure();
   boolean IAQmeasureRaw();
