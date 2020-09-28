@@ -15,8 +15,7 @@ Adafruit invests time and resources providing this open source code, please supp
 To install, use the Arduino Library Manager and search for "Adafruit SGP30" and install the library.
 
 ## Dependencies
- * [Adafruit ILI9341](https://github.com/adafruit/Adafruit_ILI9341)
- * [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library)
+ * [Adafruit Bus IO](https://github.com/adafruit/Adafruit_BusIO)
 
 # Contributing
 

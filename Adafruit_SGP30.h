@@ -22,7 +22,8 @@
 #define ADAFRUIT_SGP30_H
 
 #include "Arduino.h"
-#include <Wire.h>
+#include <Adafruit_BusIO_Register.h>
+#include <Adafruit_I2CDevice.h>
 
 // the i2c address
 #define SGP30_I2CADDR_DEFAULT 0x58 ///< SGP30 has only one I2C address
@@ -71,14 +72,12 @@ public:
   uint16_t serialnumber[3];
 
 private:
-  TwoWire *_i2c;
-  uint8_t _i2caddr;
-
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
   void write(uint8_t address, uint8_t *data, uint8_t n);
   void read(uint8_t address, uint8_t *data, uint8_t n);
-  boolean readWordFromCommand(uint8_t command[], uint8_t commandLength,
-                              uint16_t delay, uint16_t *readdata = NULL,
-                              uint8_t readlen = 0);
+  bool readWordFromCommand(uint8_t command[], uint8_t commandLength,
+                           uint16_t delay, uint16_t *readdata = NULL,
+                           uint8_t readlen = 0);
   uint8_t generateCRC(uint8_t data[], uint8_t datalen);
 };
 #endif // ndef ADAFRUIT_SGP30_H
