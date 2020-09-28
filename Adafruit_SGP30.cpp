@@ -25,10 +25,8 @@
  *
  */
 
-#include "Arduino.h"
-
 #include "Adafruit_SGP30.h"
-//#define I2C_DEBUG
+#include "Arduino.h"
 
 /*!
  *  @brief  Instantiates a new SGP30 class
@@ -47,10 +45,15 @@ Adafruit_SGP30::Adafruit_SGP30() {}
  *  @return True if SGP30 found on I2C, False if something went wrong!
  */
 boolean Adafruit_SGP30::begin(TwoWire *theWire, boolean initSensor) {
-  _i2caddr = SGP30_I2CADDR_DEFAULT;
-  _i2c = theWire;
+  if (i2c_dev) {
+    delete i2c_dev; // remove old interface
+  }
 
-  _i2c->begin();
+  i2c_dev = new Adafruit_I2CDevice(SGP30_I2CADDR_DEFAULT, theWire);
+
+  if (!i2c_dev->begin()) {
+    return false;
+  }
 
   uint8_t command[2];
   command[0] = 0x36;
@@ -217,30 +220,14 @@ boolean Adafruit_SGP30::setHumidity(uint32_t absolute_humidity) {
  *  @brief  I2C low level interfacing
  */
 
-boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[],
-                                            uint8_t commandLength,
-                                            uint16_t delayms,
-                                            uint16_t *readdata,
-                                            uint8_t readlen) {
+bool Adafruit_SGP30::readWordFromCommand(uint8_t command[],
+                                         uint8_t commandLength,
+                                         uint16_t delayms, uint16_t *readdata,
+                                         uint8_t readlen) {
 
-  _i2c->beginTransmission(_i2caddr);
-
-#ifdef I2C_DEBUG
-  Serial.print("\t\t-> ");
-#endif
-
-  for (uint8_t i = 0; i < commandLength; i++) {
-    _i2c->write(command[i]);
-#ifdef I2C_DEBUG
-    Serial.print("0x");
-    Serial.print(command[i], HEX);
-    Serial.print(", ");
-#endif
+  if (!i2c_dev->write(command, commandLength)) {
+    return false;
   }
-#ifdef I2C_DEBUG
-  Serial.println();
-#endif
-  _i2c->endTransmission();
 
   delay(delayms);
 
@@ -248,24 +235,11 @@ boolean Adafruit_SGP30::readWordFromCommand(uint8_t command[],
     return true;
 
   uint8_t replylen = readlen * (SGP30_WORD_LEN + 1);
-  if (_i2c->requestFrom(_i2caddr, replylen) != replylen)
-    return false;
   uint8_t replybuffer[replylen];
-#ifdef I2C_DEBUG
-  Serial.print("\t\t<- ");
-#endif
-  for (uint8_t i = 0; i < replylen; i++) {
-    replybuffer[i] = _i2c->read();
-#ifdef I2C_DEBUG
-    Serial.print("0x");
-    Serial.print(replybuffer[i], HEX);
-    Serial.print(", ");
-#endif
-  }
 
-#ifdef I2C_DEBUG
-  Serial.println();
-#endif
+  if (!i2c_dev->read(replybuffer, replylen)) {
+    return false;
+  }
 
   for (uint8_t i = 0; i < readlen; i++) {
     uint8_t crc = generateCRC(replybuffer + i * 3, 2);
