@@ -5,6 +5,10 @@
  * Arduino platform.  It is designed specifically to work with the
  * Adafruit SGP30 breakout: http://www.adafruit.com/products/3709
  *
+ * For more information on the sensor see the data sheet at:
+ * https://sensirion.com/
+ * Sensirion_Gas_Sensors_Datasheet_SGP30.pdf
+ *
  * These sensors use I2C to communicate, 2 pins (SCL+SDA) are required
  * to interface with the breakout.
  *
@@ -52,19 +56,25 @@ public:
   boolean setHumidity(uint32_t absolute_humidity);
 
   /** The last measurement of the IAQ-calculated Total Volatile Organic
-   *  Compounds in ppb. This value is set when you call {@link IAQmeasure()} **/
+   *  Compounds in ppb. Measurement range 0 ppb to 60000 ppb.
+   *  This value is set when you call {@link IAQmeasure()} **/
   uint16_t TVOC;
 
-  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. This
-   *  value is set when you call {@link IAQmeasure()} **/
+  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. 
+   *  Measurement range 400 ppm to 60000 ppm.
+   *  This value is set when you call {@link IAQmeasure()} **/
   uint16_t eCO2;
 
-  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. This
-   *  value is set when you call {@link IAQmeasureRaw()} **/
+  /** The last measurement of H2 in ppm. 
+   *  Measurement range 0 ppm to 1000 ppm.
+   *  Specified range (likely most reliable): 0.3 ppm to 30 ppm.
+   *  This value is set when you call {@link IAQmeasureRaw()} **/
   uint16_t rawH2;
 
-  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. This
-   *  value is set when you call {@link IAQmeasureRaw()} **/
+  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. 
+   *  Measurement range 0 ppm to 1000 ppm.
+   *  Specified range (likely most reliable): 0.5 ppm to 3 ppm.
+   *  This value is set when you call {@link IAQmeasureRaw()} **/
   uint16_t rawEthanol;
 
   /** The 48-bit serial number, this value is set when you call {@link begin()}
