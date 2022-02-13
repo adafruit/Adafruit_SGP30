@@ -29,7 +29,7 @@
 #include <Adafruit_BusIO_Register.h>
 #include <Adafruit_I2CDevice.h>
 
-// the i2c address
+ // the i2c address
 #define SGP30_I2CADDR_DEFAULT 0x58 ///< SGP30 has only one I2C address
 
 // commands and constants
@@ -44,50 +44,50 @@
  */
 class Adafruit_SGP30 {
 public:
-  Adafruit_SGP30();
-  boolean begin(TwoWire *theWire = &Wire, boolean initSensor = true);
-  boolean softReset();
-  boolean IAQinit();
-  boolean IAQmeasure();
-  boolean IAQmeasureRaw();
+	Adafruit_SGP30();
+	boolean begin(TwoWire *theWire = &Wire, boolean initSensor = true);
+	boolean softReset();
+	boolean IAQinit();
+	boolean IAQmeasure();
+	boolean IAQmeasureRaw();
 
-  boolean getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base);
-  boolean setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base);
-  boolean setHumidity(uint32_t absolute_humidity);
+	boolean getIAQBaseline(uint16_t *eco2_base, uint16_t *tvoc_base);
+	boolean setIAQBaseline(uint16_t eco2_base, uint16_t tvoc_base);
+	boolean setHumidity(uint32_t absolute_humidity);
 
-  /** The last measurement of the IAQ-calculated Total Volatile Organic
-   *  Compounds in ppb. Measurement range 0 ppb to 60000 ppb.
-   *  This value is set when you call {@link IAQmeasure()} **/
-  uint16_t TVOC;
+	/** The last measurement of the IAQ-calculated Total Volatile Organic
+	 *  Compounds in ppb. Measurement range 0 ppb to 60000 ppb.
+	 *  This value is set when you call {@link IAQmeasure()} **/
+	uint16_t TVOC;
 
-  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. 
-   *  Measurement range 400 ppm to 60000 ppm.
-   *  This value is set when you call {@link IAQmeasure()} **/
-  uint16_t eCO2;
+	/** The last measurement of the IAQ-calculated equivalent CO2 in ppm.
+	 *  Measurement range 400 ppm to 60000 ppm.
+	 *  This value is set when you call {@link IAQmeasure()} **/
+	uint16_t eCO2;
 
-  /** The last measurement of H2 in ppm. 
-   *  Measurement range 0 ppm to 1000 ppm.
-   *  Specified range (likely most reliable): 0.3 ppm to 30 ppm.
-   *  This value is set when you call {@link IAQmeasureRaw()} **/
-  uint16_t rawH2;
+	/** The last measurement of H2 in ppm.
+	 *  Measurement range 0 ppm to 1000 ppm.
+	 *  Specified range (likely most reliable): 0.3 ppm to 30 ppm.
+	 *  This value is set when you call {@link IAQmeasureRaw()} **/
+	uint16_t rawH2;
 
-  /** The last measurement of the IAQ-calculated equivalent CO2 in ppm. 
-   *  Measurement range 0 ppm to 1000 ppm.
-   *  Specified range (likely most reliable): 0.5 ppm to 3 ppm.
-   *  This value is set when you call {@link IAQmeasureRaw()} **/
-  uint16_t rawEthanol;
+	/** The last measurement of the IAQ-calculated equivalent CO2 in ppm.
+	 *  Measurement range 0 ppm to 1000 ppm.
+	 *  Specified range (likely most reliable): 0.5 ppm to 3 ppm.
+	 *  This value is set when you call {@link IAQmeasureRaw()} **/
+	uint16_t rawEthanol;
 
-  /** The 48-bit serial number, this value is set when you call {@link begin()}
-   * **/
-  uint16_t serialnumber[3];
+	/** The 48-bit serial number, this value is set when you call {@link begin()}
+	 * **/
+	uint16_t serialnumber[3];
 
 private:
-  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
-  void write(uint8_t address, uint8_t *data, uint8_t n);
-  void read(uint8_t address, uint8_t *data, uint8_t n);
-  bool readWordFromCommand(uint8_t command[], uint8_t commandLength,
-                           uint16_t delay, uint16_t *readdata = NULL,
-                           uint8_t readlen = 0);
-  uint8_t generateCRC(uint8_t data[], uint8_t datalen);
+	Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
+	void write(uint8_t address, uint8_t *data, uint8_t n);
+	void read(uint8_t address, uint8_t *data, uint8_t n);
+	bool readWordFromCommand(uint8_t command[], uint8_t commandLength,
+		uint16_t delay, uint16_t *readdata = NULL,
+		uint8_t readlen = 0);
+	uint8_t generateCRC(uint8_t data[], uint8_t datalen);
 };
 #endif // ndef ADAFRUIT_SGP30_H
