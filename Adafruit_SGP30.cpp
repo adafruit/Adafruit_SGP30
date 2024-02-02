@@ -82,14 +82,16 @@ boolean Adafruit_SGP30::begin(TwoWire *theWire, boolean initSensor) {
  * Call" mode. Take note that this is not sensor specific and all devices that
  * support the General Call mode on the on the same I2C bus will perform this.
  *
- *   @return True if command completed successfully, false if something went
- *           wrong!
+ *  @param  theWire
+ *          Optional pointer to I2C interface, otherwise use Wire
+ * 
+ *  @return True if command completed successfully, false if something went
+ *          wrong!
  */
-boolean Adafruit_SGP30::softReset(void) {
-  uint8_t command[2];
-  command[0] = 0x00;
-  command[1] = 0x06;
-  return readWordFromCommand(command, 2, 10);
+boolean Adafruit_SGP30::softReset(TwoWire* theWire) {
+  theWire->beginTransmission(0x00);
+  theWire->write(0x06);
+  return !(theWire->endTransmission());
 }
 
 /*!
